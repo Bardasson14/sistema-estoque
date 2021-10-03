@@ -1,0 +1,144 @@
+<div class="main-panel">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-info card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">store</i>
+                            </div>
+                            <p class="card-category">Tamanho do Estoque</p>
+                            <h3 class="card-title">
+                                <%= @total_produtos_estoque %>
+                                    <small>unidade(s)</small>
+                            </h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">update</i> Atualizado agora
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                      <div class="card card-stats">
+                          <div class="card-header card-header-info card-header-icon">
+                              <div class="card-icon">
+                                  <i class="material-icons">attach_money</i>
+                              </div>
+                              <p class="card-category">Valor do Estoque</p>
+                              <% if can? :manage, :all%>
+                                <h3 class="card-title"> R$ <%= @valor_estoque %></h3>
+                              <% else %>
+                                <h3 class="card-title"> (não disponível)</h3>
+                              <%end%>
+                          </div>
+                          <div class="card-footer">
+                              <div class="stats">
+                                  <i class="material-icons">update</i> Atualizado agora
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-info card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">arrow_back</i>
+                            </div>
+                            <p class="card-category">Movimentações de entrada</p>
+                            <h3 class="card-title">
+                                <%= @entradas %>
+                            </h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">update</i> Atualizado agora
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-info card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">arrow_forward</i>
+                            </div>
+                            <p class="card-category">Movimentações de saída</p>
+                            <h3 class="card-title">
+                                <%= @saidas %>
+                            </h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">update</i> Atualizado agora
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-md-4">
+              <div class="card card-chart">
+                <div class="card-header card-header-primary">
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Último produto adicionado</h4>
+                  <p class="card-category">
+                    <%= Produto.last&.nome || "(não disponível)" %>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class = "material-icons">inventory_2</i>
+                    <%= link_to 'Gerenciar Produtos', produtos_path%>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-chart">
+                <div class="card-header card-header-primary">
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Último usuário registrado</h4>
+                  <p class="card-category">
+                    <%= Usuario.last&.nome || "(não disponível)" %>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">manage_accounts</i>
+                    <%= link_to 'Gerenciar Usuários', usuarios_path %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-chart">
+                <div class="card-header card-header-primary">
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Movimentação mais recente</h4>
+                  <p class="card-category">
+                    <% if @movimentacao_mais_recente %>
+                      <%= "#{@movimentacao_mais_recente.tipo.capitalize} de #{@movimentacao_mais_recente.quantidade} unidade(s) de #{@movimentacao_mais_recente.produto.nome}" %>
+                    <% else %>
+                     (não disponível)
+                    <% end %>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">sync_alt</i>
+                    <%= link_to 'Gerenciar Estoque ', movimentacoes_path %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+    <div class="main-panel">
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-10">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <div class="row">
+                    <div class = "col-md-5">
+                      <h4 class="card-title">Cadastrar Produto</h4>
+                        <p class="card-category">Adicione um novo produto ao sistema</p>
+                    </div>
+                    <div class = "col-md-7">
+                      <!-- COLABORADORES -->
+                      <% if flash[:alert] %>
+                        <div class="text-warning"><%= flash[:alert] %></div>
+                        <br>
+                        <div id="error_explanation" class="text-warning">
+                          <%= flash[:errors] %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+                  
+                <div class="card-body">
+                  <%= form_for @produto, :url => produtos_path, local: true do |f| %>
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group">
+                          <%= f.label :nome, "nome do produto", class: "bmd-label-floating"%>
+                          <%= f.text_field :nome, class: "form-control" %>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <%= f.label :quantidade_disponivel, "quantidade disponível", class: "bmd-label-floating"%>
+                          <%= f.number_field :quantidade_disponivel, class: "form-control" %>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <%= f.label :preco_unidade, "preço", class: "bmd-label-floating"%>
+                          <%= f.number_field :preco_unidade, class: "form-control", step: :any %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <%= f.label :descricao, "descrição do produto", class: "bmd-label-floating"%>
+                          <%= f.text_area :descricao, class: "form-control" %>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <%= f.submit 'Cadastrar', class: "btn btn-primary pull-right" %>
+                    <div class="clearfix" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

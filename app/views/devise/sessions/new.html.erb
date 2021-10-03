@@ -1,0 +1,44 @@
+<div class="main-panel">
+    <div class="content">
+            <div class="d-flex justify-content-center col-md-8">
+        <div class="container-fluid">
+            <div class="card-title">
+                <h2>Faça login para ter acesso ao sistema.</h2>
+            </div>
+            <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+            <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+            <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+            
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="form-group">
+                    <%= f.email_field :email, autofocus: true, placeholder:"e-mail", class:"form-control" %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.password_field :password, placeholder:"Senha", class:"form-control" %>
+                </div>
+                <div class="row">
+                
+                    <div class="col-md-6">
+                        <%= f.submit "Entrar" , class:"btn btn-primary submit"%>
+                        <br>
+                    </div>
+
+                    <div class="col-md-3">
+                        <%= link_to 'Criar Conta', new_usuario_registration_path, class: "reset_pass" %>
+                    </div>
+
+                    <div class="col-md-3">
+                        <%= link_to 'Esqueci minha senha', new_usuario_password_path, class: "reset_pass" %>
+                    </div>
+                    
+                </div>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <div class="separator"></div>
+                <% end %>
+        </div>
+    </div>
+    </div>
+</div>

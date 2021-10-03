@@ -1,0 +1,21 @@
+<div class="main-panel">
+  <div class="content">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title"><%= "#{@produto.nome}"%></h4>
+          <p class="card-category"><%= "Cód.: #{@produto.id}"%></p>
+        </div>
+        <div class="card-body">
+            <div class="info">
+                <h3>Informações disponíveis</h3>
+                <h5><%= "#{@produto.descricao}" || "(não disponível)" %></h5>
+                <h5><%= "#{@produto.quantidade_disponivel} unidades em estoque" %></h5>
+                <h5><%= "#{@produto.preco_unidade} R$ p/ unidade" %></h5>
+            </div>
+          <%= link_to "Voltar", produtos_path, class: "btn btn-primary pull-right" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

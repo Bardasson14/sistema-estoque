@@ -1,0 +1,75 @@
+<div class="main-panel overflow-hidden">
+  <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title ">Listagem de Produtos</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>
+                        ID
+                      </th>
+                      <th>
+                        Nome
+                      </th>
+                      <th>
+                        Unid. em estoque
+                      </th>
+                      <th>
+                        Preço (R$/unid)
+                      </th>
+                      <th>
+                        Criado em
+                      </th>
+                      <!--th>
+                        Últ. atualização
+                      </th-->
+                      <th>
+                        Ações
+                      </th>
+                    </thead>
+                    <tbody>
+                      <% @produtos.each do |produto|%>
+                        <tr>
+                          <td class="text-primary">
+                            <%= produto.id %>
+                          </td>
+                          <td>
+                            <%= produto.nome %>
+                          </td>
+                          <td>
+                            <%= produto.quantidade_disponivel %>
+                          </td>
+                          <td>
+                            <%= produto.preco_unidade %>
+                          </td>
+                          <td>
+                            <%= produto.created_at %>
+                          </td>
+                          <td>
+                            <div class="row">
+                              <%= link_to produto_path(produto.id) do%>
+                                <i class="material-icons text-primary">info_outlined</i>
+                              <% end %>
+                              <%= button_to produto_path(produto.id), class: "invisible-button",  method: :delete, data: {confirm: "Deletar um produto acarretará em remover todas as suas movimentações. Deseja continuar?"}, local: true do %>
+                                <i class="material-icons text-primary">remove_circle_outlined</i>
+                              <% end %>
+                            </div>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                  <div class="d-flex justify-content-center">
+                    <a href="produtos/new"><i class="material-icons">add_circle_outline</i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>

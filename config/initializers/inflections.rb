@@ -11,4 +11,5 @@
 
 ActiveSupport::Inflector.inflections do |inflect|
     inflect.irregular 'movimentacao', 'movimentacoes'
+    inflect.irregular 'colaborador', 'colaboradores'
 end

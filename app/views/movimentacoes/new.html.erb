@@ -1,0 +1,62 @@
+<div class="main-panel">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <h4 class="card-title">Nova movimentação</h4>
+                                    <p class="card-category">Adicione uma entrada/saída no sistema</p>
+                                </div>
+                                <div class="col-md-7">
+                                    <% if flash[:alert] %>
+                                        <div class="text-warning">
+                                            <%= flash[:alert] %>
+                                        </div>
+                                    <% end %>
+                                    <br>
+                                    <% if flash[:errors] %>
+                                        <div id="error_explanation" class="text-warning">
+                                            <%= flash[:errors] %>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <%= form_for :movimentacao, :url=> movimentacoes_path, local: true do |f| %>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <%= f.label :produto_id, "produto: " , class: "bmd-label-floating" %>
+                                                <%= f.select :produto_id, @produtos, class:"form-control selectpicker" %>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <%= f.label :quantidade, "quantidade" , class: "bmd-label-floating" %>
+                                                <%= f.number_field :quantidade, class: "form-control" %>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <%= f.label :tipo, "tipo" , class: "bmd-label-floating" %>
+                                                <%= f.select :tipo, options_for_select(["entrada", "saida" ]) %>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <%= f.submit 'Cadastrar' , class: "btn btn-primary pull-right" %>
+                                    <div class="clearfix" %>
+                                        <% end %>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

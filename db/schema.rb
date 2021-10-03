@@ -10,23 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_01_002431) do
+ActiveRecord::Schema.define(version: 2021_10_03_132059) do
 
   create_table "movimentacoes", force: :cascade do |t|
     t.string "tipo"
     t.integer "produto_id", null: false
-    t.integer "usuario_id", null: false
     t.integer "quantidade"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["produto_id"], name: "index_movimentacoes_on_produto_id"
-    t.index ["usuario_id"], name: "index_movimentacoes_on_usuario_id"
   end
 
   create_table "produtos", force: :cascade do |t|
     t.string "nome"
     t.string "descricao"
-    t.string "quantidade_disponivel"
+    t.integer "quantidade_disponivel"
     t.decimal "preco_unidade"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -47,5 +45,4 @@ ActiveRecord::Schema.define(version: 2021_10_01_002431) do
   end
 
   add_foreign_key "movimentacoes", "produtos"
-  add_foreign_key "movimentacoes", "usuarios"
 end

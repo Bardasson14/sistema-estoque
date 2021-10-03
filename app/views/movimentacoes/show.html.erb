@@ -1,0 +1,19 @@
+<div class="main-panel">
+  <div class="content">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title"><%= "Movimentação n° #{@movimentacao.id}"%></h4>
+        </div>
+        <div class="card-body">
+            <div class="info">
+                <h3>Informações disponíveis</h3>
+                <h5><%= "#{@movimentacao.tipo.capitalize} de #{@movimentacao.quantidade} unidades do produto #{@movimentacao.produto.nome}" %></h5>
+                <h5><%= "Data de registro: #{@movimentacao.created_at}" %></h5>
+            </div>
+          <%= link_to "Voltar", movimentacoes_path, class: "btn btn-primary pull-right" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
